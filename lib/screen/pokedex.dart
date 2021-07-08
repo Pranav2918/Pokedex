@@ -1,3 +1,4 @@
+import 'package:Pokemon_App/bloc/nav_cubit.dart';
 import 'package:Pokemon_App/bloc/pokemon_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ class PokedexView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
         title: Text('Pokedex'),
@@ -24,24 +26,29 @@ class PokedexView extends StatelessWidget {
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemCount: state.pokemonListings.length,
               itemBuilder: (context, index) {
-                return Card(
-                  elevation: 5.0,
-                  child: GridTile(
-                    child: Column(
-                      children: [
-                        Image.network(
-                          state.pokemonListings[index].imageUrl,
-                          fit: BoxFit.cover,
-                        ),
-                        Text(
-                          state.pokemonListings[index].name.toUpperCase(),
-                          style: TextStyle(
-                              fontSize: 18,
-                              color:
-                                  (index % 2 == 0) ? Colors.red : Colors.green,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
+                return GestureDetector(
+                  onTap:()=>BlocProvider.of<NavCubit>(context).showPokemonDetails(state.pokemonListings[index].id),
+                  child: Card(
+                    color: Colors.black,
+                    elevation: 5.0,
+                    child: GridTile(
+                      child: Column(
+                        children: [
+                          Image.network(
+                            state.pokemonListings[index].imageUrl,
+                            fit: BoxFit.cover,
+                          ),
+                          Text(
+                            state.pokemonListings[index].name.toUpperCase(),
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: (index % 2 == 0)
+                                    ? Colors.red[600]
+                                    : Colors.white,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 );
