@@ -1,16 +1,11 @@
 # Pokemon_App
 
-A new Flutter project.
+- Flutter Application to show pokemons
+- It lists all the pokemon and show the details for them.
+- Called Pokedex API
 
-## Getting Started
+### Screenshots
 
-In this app i'm fetching API of 'PokeAPI'.
-It also contains state-management through BLoC.
+<img src="home.png" height="500em" />   <img src="details.png" height="500em" />
 
-### HomePage
-
-<img src="home.png" height="500em" />
-
-### details
-
-<img src="details.png" height="500em" />
+#### Keep Fluttering :blue_heart:
